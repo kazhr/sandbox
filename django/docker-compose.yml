@@ -1,0 +1,14 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 8000:80
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/nginx.conf
+      - ./app:/opt/app
+
+  app:
+    build: ./gunicorn
+    volumes:
+      - ./app:/opt/app
